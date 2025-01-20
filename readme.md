@@ -4,8 +4,9 @@
 ```
 source devel/setup.bash
 roslaunch aubo_robot_driver rviz_robot.launch ip:=192.168.63.128
-
-other terminal run:
+```
+### other terminal run:
+```
 source devel/setup.bash
 rosrun aubo_robot_driver test.py
 or topic control
