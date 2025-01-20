@@ -9,7 +9,9 @@ roslaunch aubo_robot_driver rviz_robot.launch ip:=192.168.63.128
 ```
 source devel/setup.bash
 rosrun aubo_robot_driver test.py
-or topic control
+```
+### topic control
+```
 rostopic pub --once /robot_commands std_msgs/String "data: 'MOVJ 40 40 40 40 40 40'"
 
 ```
