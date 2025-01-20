@@ -1,0 +1,17 @@
+<launch>
+  <!-- 设置默认 IP 和端口 -->
+  <arg name="ip" default="127.0.0.1" />
+  <!-- 加载机器人 URDF -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find aubo_robot_driver)/aubo_description/urdf/aubo_i5.urdf'" />
+
+  <!-- 启动 joint_state_publisher 和 robot_state_publisher -->
+  <node name="joint_state_publisher" pkg="aubo_robot_driver" type="joint_state_publisher.py" >
+      <param name="ip" value="$(arg ip)" />
+  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="aubo_driver_ros" pkg="aubo_robot_driver" type="aubo_driver_ros.py" />
+
+  <!-- 启动 RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find aubo_robot_driver)/config/aubo_robot.rviz" output="screen" />
+</launch>
+
